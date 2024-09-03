@@ -1,0 +1,49 @@
+<form ng-submit="formSubmit(user)">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 center-block">
+
+      <div class="alert alert-success" ng-if="success">Zarejestrowałeś się pomyślnie. Możesz się <a href="#/login" class="alert-link">zalogować.</a></div>
+      <div class="panel panel-default" ng-if="!success">
+
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Rejestracja</strong></h3>
+        </div>
+
+        <div class="panel-body">
+
+          <div class="form-group" ng-class="{ 'has-error' : errors.name, 'has-success' : !errors.name && submit }">
+            <label>Imię</label>
+            <input type="text" class="form-control" ng-model="user.name" placeholder="Jak się do Ciebie zwracać?">
+            <span class="text-danger">{{errors.name}}</span>
+          </div>
+          
+          <div class="form-group" ng-class="{ 'has-error' : errors.email, 'has-success' : !errors.email && submit }">
+            <label>Email</label>
+            <input type="text" class="form-control" ng-model="user.email" placeholder="Twój adres e-mail">
+            <span class="text-danger">{{errors.email}}</span>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error' : errors.password, 'has-success' : !errors.password && submit }">
+            <label>Hasło</label>
+            <input type="password" class="form-control" ng-model="user.password" placeholder="Twój hasło">
+            <span class="text-danger">{{errors.passconf}}</span>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error' : errors.passconf, 'has-success' : !errors.passconf && submit }">
+            <label>Powtórz hasło</label>
+            <input type="password" class="form-control" ng-model="user.passconf" placeholder="Hasło ponowanie">
+            <span class="text-danger">{{errors.passconf}}</span>
+          </div>          
+
+          <br>
+
+          <button class="btn btn-primary btn-block">Zarejestruj się</button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</form>

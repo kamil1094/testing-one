@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-6">
+      <input type="text" class="form-control" placeholder="szukaj..." ng-model="search">
+      <br>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+
+    	<table class="table">
+    		<thead>
+    			<tr>
+      			<th>Id</th>
+      			<th>Imię</th>
+  					<th>Email</th>
+            <th>Koszyk</th>
+  					<th>Do zapłaty</th>
+  					<th>Status</th>
+  					<th></th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr ng-repeat="order in orders | filter : search">
+    				<td>{{order.id}}</td>
+    				<td>{{order.name}}</td>
+    				<td>{{order.email}}</td>
+    				<td>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Produkt</th>
+                    <th>Cena</th>
+                    <th>Waga</th>
+                    <th>Ilość</th>
+                    <th>Razem</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in order.items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.weight}}</td>
+                    <td>{{item.qty}}</td>
+                    <td>{{item.price * item.qty | number:2}} zł</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td><h3><strong>{{order.total}} zł</strong></h3></td>
+    				<td>
+              <button ng-if="order.status == 0" ng-click="changeStatus( order )" class="btn btn-warning btn-sm">Oczekuje</button>
+              <button ng-if="order.status == 1" ng-click="changeStatus( order )" class="btn btn-success btn-sm">Wysłano</button>
+            </td>
+    				<td><button ng-click="delete(order, $index)" class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-trash"></span></button></td>
+    			</tr>
+    		</tbody>
+    	</table>
+
+    </div>
+  </div>
+</div>

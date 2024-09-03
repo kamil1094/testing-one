@@ -1,0 +1,53 @@
+<form ng-submit="createUser( user )">
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-4 center-block">
+      <div class="form-group" ng-class="{'has-error' : errors.name}">
+        <label>Imię</label>
+        <input type="text" class="form-control" ng-model="user.name">
+        <span class="text-danger">{{errors.name}}</span>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error' : errors.name}">
+        <label>Email:</label>
+        <input type="text" class="form-control" ng-model="user.email">
+        <span class="text-danger">{{errors.email}}</span>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error' : errors.password}">
+        <label>Hasło</label>
+        <input type="password" class="form-control" ng-model="user.password">
+        <span class="text-danger">{{errors.password}}</span>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error' : errors.passconf}">
+        <label>Powtórz hasło</label>
+        <input type="password" class="form-control" ng-model="user.passconf">
+        <span class="text-danger">{{errors.passconf}}</span>
+      </div>
+
+      <div class="form-group">
+        <label>Rola</label>
+        <select class="form-control" ng-model="user.role">
+          <option value="user">user</option>
+          <option value="admin">admin</option>
+        </select>
+      </div>
+
+      <hr>      
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-6 center-block">
+      <button type="submit" class="btn btn-primary" ng-if="!success">Dodaj użytkownika</button>
+      <button type="button" class="btn btn-success" disabled ng-if="success">Użytkownik utworzony</button>
+      <a href="#/admin/users" class="btn btn-default pull-right">Wróć bez zmian</a>
+    </div>
+  </div>
+</div>
+
+</form>
