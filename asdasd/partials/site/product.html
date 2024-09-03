@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <h2>
+            {{product.name}}
+            <span class="label label-warning pull-right">cena: {{product.price | number:2}} zł</span>
+          </h2>
+
+          <h3><span class="label label-info">Waga: {{product.weight}} kg</span></h3>
+          <br>
+
+          <p>{{product.description}}</p>
+          <br>
+          <div ng-repeat="image in images">
+              <a href="uploads/{{id}}/{{image}}"><img ng-src="uploads/{{id}}/{{image}}" alt="" style="width:150px; margin:5px;" class="img-thumbnail"></a>
+          </div>
+          <div class="clearfix"></div>
+
+        </div>
+      </div>
+      <a href="#/products" class="btn btn-default ">Powrót</a>
+      <button ng-click="addToCart( product ); checkingCart(product)" ng-if="!product.qty" class="btn btn-primary pull-right">Dodaj
+       do koszyka</button>
+      <div class="btn btn-primary pull-right" ng-if="product.qty" ng-click="addToCart( product ); checkingCart(product)">W koszyku:{{product.qty}}(Dodaj)</div>
+    </div>
+  </div>
+</div>

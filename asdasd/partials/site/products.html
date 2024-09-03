@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="col-sm-12">
+      <div class="col-sm-6">
+        <input type="text" class="form-control" size="40" placeholder="szukaj..." ng-model="search">
+      </div>
+      <div class="col-sm-6 pull-right alert alert-success" ng-show="added">Produkt dodany! x{{qty}}</div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="panel panel-default" ng-repeat="product in products | filter : search">
+        <div class="panel-body" ng-init="checkingCart(product)">
+          <h2><span class="label label-warning pull-right">{{product.price | number:2}} zł / kg</span></h2>
+            <h2><a href="#/product/{{product.id}}">{{product.name}}</a></h2>
+          <p>&nbsp;</p>
+          <a href="#/product/{{product.id}}" class="btn btn-info">Szczegóły</a>
+          <button ng-click="addToCart( product ); checkingCart(product)" class="btn btn-primary">Dodaj do koszyka</button>
+          <a href="#/cart"><div class="btn btn-default pull-right" ng-if="product.qty">W koszyku:{{product.qty}}</div></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
